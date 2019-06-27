@@ -8,44 +8,30 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return QuestionResource::collection(Question::latest()->get());
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Request $request,  Question $question)
     {
-        //
+        Question::create($request->all());
+        return response('Created',201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Question  $question
-     * @return \Illuminate\Http\Response
-     */
     public function show(Question $question)
     {
         return new QuestionResource($question);
     }
 
-    public function update(Request $request)
+    public function update(Request $request, Question $question)
     {
 
-        auth()->user()->question()->create($request->all());
-        return response('Created',201);
+        $question->update($request->all());
+
+        return response('Updated',201);
+
     }
 
     public function destroy(Question $question)
