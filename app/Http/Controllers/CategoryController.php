@@ -34,12 +34,6 @@ class CategoryController extends Controller
         return response('Created',201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function show(Category $category)
     {
         return $category;
