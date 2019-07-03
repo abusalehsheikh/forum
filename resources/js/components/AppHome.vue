@@ -8,7 +8,7 @@
 <script>
     import toolbar from './Toolbar'
     import AppFooter from './AppFooter'
-    import Login from './login/Login'
+    import Login from './Auth/Login'
     export default {
         components:{toolbar, AppFooter, Login}
 
